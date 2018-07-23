@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Curso>
+<!-- Title -->
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h5 class="txt-dark">Selecione o evento</h5>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#"><span>e-commerce</span></a></li>
+            <li class="active"><span>products</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<!-- /Title -->
+<!-- Product Row One -->
+<div class="row">
+    @foreach (var curso in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+            <div class="panel panel-default card-view pa-0">
+                <div class="panel-wrapper collapse in">
+                    <a href="@Url.Action("Index","Curso", new { id = curso.CursoID })">
+                        <div class="panel-body pa-0">
+                            <article class="col-item">
+                                <div class="photo">
+                                    <img src="@Url.Content(Caminho.Evento + curso.Logo)" class="img-responsive" alt="@curso.Nome" />
+                                </div>
+                                <div class="info">
+                                    <h6>@curso.Nome</h6>
+                                </div>
+                            </article>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- /Product Row Four -->
+
+@section css{
+    <!--alerts CSS -->
+    <link href="~/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+}
+
+@section js {
+    <!-- Sweet-Alert  -->
+    <script src="~/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/dist/js/sweetalert-data.js"></script>
+}
