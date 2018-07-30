@@ -7,6 +7,7 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using ControleAcesso.Configurations;
 using ControleAcesso.DAO;
+using ControleAcesso.Data;
 using ControleAcesso.Models;
 using ControleAcesso.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -19,8 +20,12 @@ namespace Controle_de_Acesso.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly ApplicationDbContext _context;
 
-
+        public LoginController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -67,8 +72,14 @@ namespace Controle_de_Acesso.Controllers
                     IsPersistent = true
                 };
 
+                string scheme = "";
+                if (usuarioBase.TipoUsuario.Administrador)
+                    scheme = "admin";
+                else
+                    scheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
                 await HttpContext.SignInAsync(
-                 CookieAuthenticationDefaults.AuthenticationScheme,
+                 scheme,
                  new ClaimsPrincipal(claimsIdentity),
                  authProperties);
 
@@ -76,7 +87,7 @@ namespace Controle_de_Acesso.Controllers
 
             }
             else
-            { 
+            {
                 return RedirectToAction("Index", "Login", new { err = "Sim" });
             }
         }

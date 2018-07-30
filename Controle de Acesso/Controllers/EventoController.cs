@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ControleAcesso.DAO;
+using ControleAcesso.Helpers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -18,9 +19,12 @@ namespace ControleAcesso.Controllers
        CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Index(int id, [FromServices]CursosDAO cursosDAO)
         {
-            var cursos = cursosDAO.Listar(id);
+            if (id != 0)
+                Cookie.SalvarCookie("EventoSelecionado", id.ToString(), Request);
+
+            var cursos = cursosDAO.ListarPorEvento(id);
             return View(cursos);
-        } 
-         
+        }
+
     }
 }

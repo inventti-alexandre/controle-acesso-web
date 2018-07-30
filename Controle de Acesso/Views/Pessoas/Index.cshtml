@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Pessoa>
+
+@{
+    var eventos = ViewData["Eventos"] as IEnumerable<Evento>
+        ;
+    var eventoSelecionado = int.Parse(ViewData["EventoSelecionado"].ToString());
+}
+
+<!-- Title -->
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h5 class="txt-dark">Pessoas</h5>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li class="active"><span>Pessoas</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<!-- /Title -->
+<!-- Row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default border-panel card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <div class="form-wrap">
+                        <form id="form-filtrar-por-evento" asp-action="SelecionarEvento" class="form-horizontal">
+                            <div class="form-group mb-0">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label class="control-label mb-10">Selecione o evento que está trabalhando</label>
+                                            <select class="form-control select2" id="selecionar-evento" name="id">
+                                                @foreach (var evento in eventos)
+                                                {
+                                                    if (eventoSelecionado == evento.EventoID)
+                                                    {
+                                                        <option selected value="@evento.EventoID">@evento.Nome</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@evento.EventoID">@evento.Nome</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Row -->
+<!-- Row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default border-panel card-view">
+            <div class="panel-heading">
+                <div class="pull-left">
+                    <a href="@Url.Action("Novo","Pessoas")" class="btn btn-primary btn-outline btn-rounded">Inserir</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <div class="table-wrap">
+                        <div class="table-responsive">
+                            <table id="datable_3" class="table table-hover display pb-30">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Empresa</th>
+                                        <th class="text-center">Imprimir Etiqueta</th>
+                                        <th class="text-center">Gerenciar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var pessoa in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @pessoa.Nome
+                                            </td>
+                                            <td>
+                                                @pessoa.CPF
+                                            </td>
+                                            <td>
+                                                @pessoa.Empresa
+                                            </td>
+                                            <td class="text-center">
+                                                <form class="imprimir-etiqueta" action="@Url.Action("Imprimir", "Pessoas" )" method="post">
+                                                    <input type="hidden" value="@pessoa.PessoaID" name="id" />
+                                                    <button class="btn btn-default" type="submit">
+                                                        <i class="fa fa-print"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn btn-default" href="@Url.Action("Gerenciar","Pessoas", new { id=pessoa.PessoaID })">
+                                                    <i class="fa fa-gear"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Row -->
+@section css{
+    <!-- Data table CSS -->
+    <link href="~/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <!-- select2 CSS -->
+    <link href="~/vendors/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section js {
+    <!-- Data table JavaScript -->
+    <script src="~/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/bower_components/jquery-form-ajax/jquery.form.js"></script><!-- Select2 JavaScript -->
+    <script src="~/vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <script>
+        $('#datable_3').DataTable(
+            {
+                "language": {
+                    "url": "/vendors/bower_components/datatables/media/i18n/pt-br.json"
+                }
+            });
+        $("#selecionar-evento").change(function () {
+            $("#form-filtrar-por-evento").submit();
+        });
+        /* Select2 Init*/
+        $(".select2").select2();
+        // bind 'myForm' and provide a simple callback function
+        $('.imprimir-etiqueta').ajaxForm(function (data) {
+            if (data) {
+                $.toast().reset('all');
+                $("body").removeAttr('class');
+                $.toast({
+                    heading: '',
+                    text: 'Etiqueta impressa com sucesso!',
+                    position: 'top-right',
+                    loaderBg: '#fec107',
+                    icon: 'success',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+            }
+            else {
+                $.toast().reset('all');
+                $("body").removeAttr('class');
+                $.toast({
+                    heading: '',
+                    text: 'Problema ao imprimir etiqueta. Tente novamente.',
+                    position: 'top-right',
+                    loaderBg: '#fec107',
+                    icon: 'error',
+                    hideAfter: 3500,
+                    stack: 6
+                });
+            }
+        });
+    </script>
+}

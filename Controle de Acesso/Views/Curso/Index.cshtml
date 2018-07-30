@@ -21,7 +21,10 @@
         <div class="panel panel-default border-panel card-view">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h6 class="panel-title txt-dark">data Table</h6>
+                    <h6 class="panel-title txt-dark"> </h6>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-primary btn-icon left-icon"> <i class="fa fa-plus"></i> <span>Inserir</span></button>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -36,6 +39,7 @@
                                         <th>CPF</th>
                                         <th>Empresa</th>
                                         <th>Imprimir Etiqueta</th>
+                                        <th>Remover</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -44,6 +48,7 @@
                                         <th>CPF</th>
                                         <th>Empresa</th>
                                         <th>Imprimir Etiqueta</th>
+                                        <th>Remover</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -51,16 +56,25 @@
                                     {
                                         <tr>
                                             <td>
-                                                @presente.Nome
+                                                @presente.Pessoa.Nome
                                             </td>
                                             <td>
-                                                @presente.CPF
+                                                @presente.Pessoa.CPF
                                             </td>
                                             <td>
-                                                @presente.Empresa
+                                                @presente.Pessoa.Empresa
                                             </td>
                                             <td class="text-center">
-                                                <form>
+                                                <form class="imprimir-etiqueta" action="@Url.Action("Imprimir", "Curso")" method="post">
+                                                    <input type="hidden" value="@presente.CursoPresencaID" name="id" />
+                                                    <button class="btn btn-default" type="submit">
+                                                        <i class="fa fa-print"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="text-center">
+                                                <form class="imprimir-etiqueta" action="@Url.Action("Imprimir", "Curso")" method="post">
+                                                    <input type="hidden" value="@presente.CursoPresencaID" name="id" />
                                                     <button class="btn btn-default" type="submit">
                                                         <i class="fa fa-print"></i>
                                                     </button>

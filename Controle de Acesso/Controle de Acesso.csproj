@@ -8,8 +8,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180723123634_init.cs" />
+    <Compile Remove="Migrations\20180723123634_init.Designer.cs" />
+    <Compile Remove="Migrations\20180723132835_passwordToSenha.cs" />
+    <Compile Remove="Migrations\20180723132835_passwordToSenha.Designer.cs" />
     <Compile Remove="Migrations\20180723175320_CursoEvento.cs" />
     <Compile Remove="Migrations\20180723175320_CursoEvento.Designer.cs" />
+    <Compile Remove="Migrations\20180723175513_CursoEvento.cs" />
+    <Compile Remove="Migrations\20180723175513_CursoEvento.Designer.cs" />
+    <Compile Remove="Migrations\20180723181549_LOgoEvento.cs" />
+    <Compile Remove="Migrations\20180723181549_LOgoEvento.Designer.cs" />
+    <Compile Remove="Migrations\20180723185956_LogoCurso.cs" />
+    <Compile Remove="Migrations\20180723185956_LogoCurso.Designer.cs" />
+    <Compile Remove="Migrations\20180723191734_CursoPresenca.cs" />
+    <Compile Remove="Migrations\20180723191734_CursoPresenca.Designer.cs" />
+    <Compile Remove="Migrations\20180723192049_CursoPresenca2.cs" />
+    <Compile Remove="Migrations\20180723192049_CursoPresenca2.Designer.cs" />
+    <Compile Remove="Migrations\20180723200747_CursoPresencaEmpresa.cs" />
+    <Compile Remove="Migrations\20180723200747_CursoPresencaEmpresa.Designer.cs" />
+    <Compile Remove="Migrations\20180724121517_atualizacao.cs" />
+    <Compile Remove="Migrations\20180724121517_atualizacao.Designer.cs" />
+    <Compile Remove="Migrations\20180724125039_Status.cs" />
+    <Compile Remove="Migrations\20180724125039_Status.Designer.cs" />
+    <Compile Remove="Migrations\20180724131811_Status.cs" />
+    <Compile Remove="Migrations\20180724131811_Status.Designer.cs" />
+    <Compile Remove="Migrations\20180724171532_cnpj.cs" />
+    <Compile Remove="Migrations\20180724171532_cnpj.Designer.cs" />
+    <Compile Remove="Migrations\20180724184108_Celular.cs" />
+    <Compile Remove="Migrations\20180724184108_Celular.Designer.cs" />
+    <Compile Remove="Migrations\20180724185918_Celular.cs" />
+    <Compile Remove="Migrations\20180724185918_Celular.Designer.cs" />
+    <Compile Remove="Migrations\20180726184023_start.cs" />
+    <Compile Remove="Migrations\20180726184023_start.Designer.cs" />
+    <Compile Remove="Migrations\20180726184109_start.cs" />
+    <Compile Remove="Migrations\20180726184109_start.Designer.cs" />
+    <Compile Remove="Migrations\20180726184519_start.cs" />
+    <Compile Remove="Migrations\20180726184519_start.Designer.cs" />
+    <Compile Remove="Migrations\20180727175019_tipoUsuario.cs" />
+    <Compile Remove="Migrations\20180727175019_tipoUsuario.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +131,7 @@
     <Content Include="wwwroot\vendors\bower_components\datatables\media\css\jquery.dataTables.css" />
     <Content Include="wwwroot\vendors\bower_components\datatables\media\css\jquery.dataTables.min.css" />
     <Content Include="wwwroot\vendors\bower_components\datatables\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="wwwroot\vendors\bower_components\datatables\media\i18n\pt-br.json" />
     <Content Include="wwwroot\vendors\bower_components\datatables\media\images\favicon.ico" />
     <Content Include="wwwroot\vendors\bower_components\datatables\media\images\sort_asc.png" />
     <Content Include="wwwroot\vendors\bower_components\datatables\media\images\sort_asc_disabled.png" />
@@ -1301,6 +1338,26 @@
 
   <ItemGroup>
     <None Include="wwwroot\arquivos\evento\4-empreenda-magistral.jpg" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <None Include="wwwroot\vendors\bower_components\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.less" />
     <None Include="wwwroot\vendors\bower_components\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.scss" />
     <None Include="wwwroot\vendors\bower_components\awesome-bootstrap-checkbox\demo\bootstrap.scss" />
@@ -2089,6 +2146,7 @@
     <None Include="wwwroot\vendors\bower_components\jasny-bootstrap\dist\js\jasny-bootstrap.min.js" />
     <None Include="wwwroot\vendors\bower_components\jquery-countTo\jquery.countTo.js" />
     <None Include="wwwroot\vendors\bower_components\jquery-countTo\readme.md" />
+    <None Include="wwwroot\vendors\bower_components\jquery-form-ajax\jquery.form.js" />
     <None Include="wwwroot\vendors\bower_components\jquery-slimscroll\examples\libs\prettify\prettify.js" />
     <None Include="wwwroot\vendors\bower_components\jquery-slimscroll\jquery.slimscroll.js" />
     <None Include="wwwroot\vendors\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
@@ -3931,6 +3989,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Api\Data\" />
+    <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\" />
     <Folder Include="wwwroot\vendors\bower_components\pdfmake\libs\FileSaver.js\" />
   </ItemGroup>
 

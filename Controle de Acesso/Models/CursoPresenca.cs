@@ -7,19 +7,18 @@ namespace ControleAcesso.Models
     public class CursoPresenca
     {
         [Key]
-        public int CursoPresencaID { get; set; } 
-
-        public string CPF { get; set; }
-
-        public string Nome { get; set; }
-
-        public string NomeCracha { get; set; }
-
-        public string Empresa { get; set; }
-
+        public int CursoPresencaID { get; set; }
+        public int PessoaID { get; set; }
+        [ForeignKey("PessoaID")]
+        public virtual Pessoa Pessoa { get; set; } 
         public int CursoID { get; set; }
-
         [ForeignKey("CursoID")]
-        public virtual Curso Curso { get; set; }
+        public virtual Curso Curso { get; set; } 
+        public int StatusID { get; set; }
+        [ForeignKey("StatusID")]
+        public virtual Status Status { get; set; }  
+        public int TipoPresencaID { get; set; }
+        [ForeignKey("TipoPresencaID")]
+        public virtual TipoPresenca TipoPresenca { get; set; }
     }
 }

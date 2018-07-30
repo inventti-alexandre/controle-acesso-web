@@ -26,5 +26,33 @@ namespace ControleAcesso.DAO
                     "Where CursoID = @CursoID", new { CursoID = id });
             }
         }
+
+        public CursoPresenca BuscarPorID(int id)
+        {
+            using (SqlConnection conexao = new SqlConnection(
+                _configuration.GetConnectionString("DefaultConnection")))
+            {
+                return conexao.QueryFirstOrDefault<CursoPresenca>(
+                    "SELECT * " +
+                    "FROM dbo.CursoPresencas " +
+                    "Where CursoPresencaID = @CursoPresencasID", new { CursoPresencasID = id });
+            }
+        }
+
+
+        public CursoPresenca BuscarPorAlunoECurso(int CursoID, string CPF)
+        {
+            using (SqlConnection conexao = new SqlConnection(
+                _configuration.GetConnectionString("DefaultConnection")))
+            {
+                return conexao.QueryFirstOrDefault<CursoPresenca>(
+                    "SELECT * " +
+                    "FROM   dbo.cursopresencas a " +
+                    "      INNER JOIN dbo.pessoas b " +
+                    "               ON b.pessoaid = a.pessoaid " +
+                    " WHERE  a.cursoid = @CursoID " +
+                    " AND b.cpf = @CPF", new { CursoID, CPF });
+            }
+        }
     }
 }

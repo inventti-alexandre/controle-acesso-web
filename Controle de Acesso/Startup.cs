@@ -40,6 +40,9 @@ namespace ControleAcesso
             services.AddTransient<EventosDAO>();
             services.AddTransient<CursosDAO>();
             services.AddTransient<CursoPresencaDAO>();
+            services.AddTransient<PessoaDAO>();
+            services.AddTransient<TipoPresencaDAO>();
+            services.AddTransient<StatusDAO>();
 
             //Iniciar configurações de autenticação com JWT 
             var signingConfigurations = new SigningConfigurations();
@@ -81,7 +84,16 @@ namespace ControleAcesso
                 options.LoginPath = "/Login";
                 options.AccessDeniedPath = "/Home/NaoAutorizado/";
                 options.ReturnUrlParameter = "";
-            });
+            })
+
+            .AddCookie("admin", options =>
+             {
+                 options.LoginPath = "/Login";
+                 options.AccessDeniedPath = "/Home/NaoAutorizado/";
+                 options.ReturnUrlParameter = "";
+             });
+
+            services.AddCors();
 
             // Ativa o uso do token como forma de autorizar o acesso
             // a recursos deste projeto
@@ -110,11 +122,27 @@ namespace ControleAcesso
             }
             app.UseStaticFiles();
             app.UseAuthentication();
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:8080")
+                       .WithOrigins("http://192.168.0.115:8100")
+                       .AllowAnyOrigin()
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+                );
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+               name: "areas",
+               template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+             );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=home}/{action=index}/{id?}");
+
+
             });
         }
     }

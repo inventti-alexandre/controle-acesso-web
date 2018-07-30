@@ -1,0 +1,292 @@
+﻿@model NovaPessoaViewModel
+
+@{
+    var status = ViewData["Status"] as IEnumerable<Status>
+    ;
+    var cursos = ViewData["Cursos"] as IEnumerable<Curso>
+        ;
+}
+
+
+<!-- Title -->
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h5 class="txt-dark">Nova pessoa</h5>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="#"><span>e-commerce</span></a></li>
+            <li class="active"><span>add-products</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<!-- /Title -->
+<!-- Row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default card-view">
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body pt-0">
+                    <div class="form-wrap">
+                        <form asp-action="Novo" method="post">
+                            <input type="hidden" asp-for="Pessoa.PessoaID" />
+                            <h6 class="txt-dark flex flex-middle capitalize-font"><i class="font-20 txt-grey zmdi zmdi-info-outline mr-10 "></i>Informações Pessoais</h6>
+                            <hr class="light-grey-hr" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Nome</label>
+                                        <input asp-for="Pessoa.Nome" type="text" class="form-control" placeholder="Digite o nome">
+                                        <span asp-validation-for="Pessoa.Nome" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Nome no crachá</label>
+                                        <input asp-for="Pessoa.NomeCracha" type="text" class="form-control" placeholder="Digite o nome que irá aparecer no crachá">
+                                        <span asp-validation-for="Pessoa.NomeCracha" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <!-- Row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Status</label>
+                                        <select asp-for="Pessoa.StatusID" class="form-control" data-placeholder="Escolha o status" tabindex="1">
+                                            @foreach (var item in status)
+                                            {
+                                                <option value="@item.StatusID">@item.Nome </option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="Pessoa.StatusID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">CPF</label>
+                                        <input asp-for="Pessoa.CPF" data-mask="999.999.999-99" type="text" class="form-control" placeholder="Digite o CPF">
+                                        <span asp-validation-for="Pessoa.CPF" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="seprator-block"></div>
+                            <h6 class="txt-dark flex flex-middle  capitalize-font"><i class="font-20 txt-grey zmdi zmdi-star mr-10"></i>Contato</h6>
+                            <hr class="light-grey-hr" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Telefone</label>
+                                        <input asp-for="Pessoa.Telefone" type="text" class="form-control" placeholder="Digite o telefone" data-mask="(99) 9999-9999">
+                                        <span asp-validation-for="Pessoa.Telefone" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Celular</label>
+                                        <input asp-for="Pessoa.Celular" type="text" class="form-control" placeholder="Digite o celular" data-mask="(99) 9? 9999-9999">
+                                        <span asp-validation-for="Pessoa.Celular" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">E-mail</label>
+                                        <input asp-for="Pessoa.Email" type="text" class="form-control" placeholder="Digite o e-mail">
+                                        <span asp-validation-for="Pessoa.Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+                            <div class="seprator-block"></div>
+                            <h6 class="txt-dark flex flex-middle  capitalize-font"><i class="font-20 txt-grey zmdi zmdi-calendar-note mr-10"></i>Informações Profissionais</h6>
+                            <hr class="light-grey-hr" />
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Farmácia</label>
+                                        <input asp-for="Pessoa.Empresa" type="text" class="form-control" placeholder="Digite a farmácia">
+                                        <span asp-validation-for="Pessoa.Empresa" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Cargo</label>
+                                        <input asp-for="Pessoa.Cargo" type="text" class="form-control" placeholder="Digite o Cargo">
+                                        <span asp-validation-for="Pessoa.Cargo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="seprator-block"></div>
+                            <h6 class="txt-dark flex flex-middle capitalize-font"><i class="font-20 txt-grey zmdi zmdi-calendar-note mr-10"></i>Endereço</h6>
+                            <hr class="light-grey-hr" />
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">CEP</label>
+                                        <input asp-for="Pessoa.CEP" type="text" class="form-control" data-mask="99.999-999" placeholder="Digite o CEP">
+                                        <span asp-validation-for="Pessoa.CEP" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Rua</label>
+                                        <input asp-for="Pessoa.Endereco" type="text" class="form-control" placeholder="Digite a rua">
+                                        <span asp-validation-for="Pessoa.Endereco" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Número</label>
+                                        <input asp-for="Pessoa.Numero" type="text" class="form-control" placeholder="Digite o número">
+                                        <span asp-validation-for="Pessoa.Numero" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Complemento</label>
+                                        <input asp-for="Pessoa.Complemento" type="text" class="form-control" placeholder="Digite o complemento">
+                                        <span asp-validation-for="Pessoa.Complemento" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Bairro</label>
+                                        <input asp-for="Pessoa.Bairro" type="text" class="form-control" placeholder="Digite o bairro">
+                                        <span asp-validation-for="Pessoa.Bairro" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">Cidade</label>
+                                        <input asp-for="Pessoa.Cidade" type="text" class="form-control" placeholder="Digite a cidade">
+                                        <span asp-validation-for="Pessoa.Cidade" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">UF</label>
+                                        <select asp-for="Pessoa.UF" class="form-control">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                        <span asp-validation-for="Pessoa.UF" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <input id="checkbox0" checked="checked" type="checkbox" asp-for="ImprimirEtiqueta">
+                                            <label for="checkbox0">Imprimir Etiqueta? </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @if (cursos.Any())
+                            {
+                                <div class="seprator-block"></div>
+                                <h6 class="txt-dark flex flex-middle" style="text-transform: none"><i class="font-20 txt-grey zmdi zmdi-calendar-note mr-10"></i>Relacione o cliente com os cursos abaixo</h6>
+                                <hr class="light-grey-hr" />
+                                <div class="row">
+                                    @foreach (var curso in cursos)
+                                    {
+                                        <div class="col-sm-3">
+                                            <p>@curso.Nome</p>
+                                            <input type="checkbox" class="js-switch js-switch-1" name="Cursos" data-color="#ff6028" value="@curso.CursoID" />
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            <div class="seprator-block"></div>
+                            <div class="form-actions">
+                                <button class="btn btn-orange btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>Salvar</span></button>
+                                <a href="@Url.Action("Index","Pessoas")" onclick="return confirm('Tem certeza que deseja voltar?')" class="btn btn-default pull-left">Cancelar</a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Row -->
+@section css{
+    <!-- Bootstrap Switches CSS -->
+    <link href="~/vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <!-- Bootstrap Switch JavaScript -->
+    <script src="~/vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+
+    <script>
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        $('.js-switch-1').each(function () {
+            new Switchery($(this)[0], $(this).data());
+        });
+
+        $("#Pessoa_CEP").blur(function () {
+            var cep = $(this).val();
+            cep = cep.replace(".", "");
+            cep = cep.replace("-", "");
+            if (cep.indexOf('_') > 0)
+                return;
+            $.ajax({
+                url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                success: function (data) {
+                    console.log(data);
+                    $("#Pessoa_Endereco").val(data.logradouro);
+                    $("#Pessoa_Bairro").val(data.bairro);
+                    $("#Pessoa_UF").val(data.uf);
+                    $("#Pessoa_Cidade").val(data.localidade);
+                }
+            });
+        });
+    </script>
+}

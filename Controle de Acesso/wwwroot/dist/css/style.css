@@ -3967,18 +3967,18 @@ footer {
   .select2-container--default .select2-selection--single::-webkit-input-placeholder, .select2-selection.select2-selection--multiple::-webkit-input-placeholder, .wizard .content > .body input::-webkit-input-placeholder, .mce-floatpanel .mce-textbox::-webkit-input-placeholder, .mce-floatpanel .mce-btn::-webkit-input-placeholder, .dataTables_wrapper .dataTables_filter input::-webkit-input-placeholder, .dataTables_wrapper .dataTables_length select::-webkit-input-placeholder, .jsgrid-cell input::-webkit-input-placeholder, .jsgrid-cell select::-webkit-input-placeholder, .tablesaw-bar .btn-select select::-webkit-input-placeholder, .dd-handle::-webkit-input-placeholder, .dd3-content::-webkit-input-placeholder, .app-search .form-control:focus::-webkit-input-placeholder,
   .app-search .select2-container--default .select2-selection--single:focus::-webkit-input-placeholder,
   .select2-container--default .app-search .select2-selection--single:focus::-webkit-input-placeholder, .app-search .select2-selection.select2-selection--multiple:focus::-webkit-input-placeholder, .app-search .mce-floatpanel .mce-textbox:focus::-webkit-input-placeholder, .mce-floatpanel .app-search .mce-textbox:focus::-webkit-input-placeholder, .app-search .mce-floatpanel .mce-btn:focus::-webkit-input-placeholder, .mce-floatpanel .app-search .mce-btn:focus::-webkit-input-placeholder, .app-search .dataTables_wrapper .dataTables_filter input:focus::-webkit-input-placeholder, .dataTables_wrapper .dataTables_filter .app-search input:focus::-webkit-input-placeholder, .app-search .dataTables_wrapper .dataTables_length select:focus::-webkit-input-placeholder, .dataTables_wrapper .dataTables_length .app-search select:focus::-webkit-input-placeholder, .app-search .jsgrid-cell input:focus::-webkit-input-placeholder, .jsgrid-cell .app-search input:focus::-webkit-input-placeholder, .app-search .jsgrid-cell select:focus::-webkit-input-placeholder, .jsgrid-cell .app-search select:focus::-webkit-input-placeholder, .app-search .tablesaw-bar .btn-select select:focus::-webkit-input-placeholder, .tablesaw-bar .btn-select .app-search select:focus::-webkit-input-placeholder, .app-search .dd-handle:focus::-webkit-input-placeholder, .app-search .dd3-content:focus::-webkit-input-placeholder {
-    text-transform: capitalize; }
+    /*text-transform: capitalize;*/ }
   .form-control:-moz-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered:-moz-placeholder,
   .select2-container--default .select2-selection--single:-moz-placeholder, .select2-selection.select2-selection--multiple:-moz-placeholder, .wizard .content > .body input:-moz-placeholder, .mce-floatpanel .mce-textbox:-moz-placeholder, .mce-floatpanel .mce-btn:-moz-placeholder, .dataTables_wrapper .dataTables_filter input:-moz-placeholder, .dataTables_wrapper .dataTables_length select:-moz-placeholder, .jsgrid-cell input:-moz-placeholder, .jsgrid-cell select:-moz-placeholder, .tablesaw-bar .btn-select select:-moz-placeholder, .dd-handle:-moz-placeholder, .dd3-content:-moz-placeholder, .app-search .form-control:-moz-placeholder:focus, .app-search .jsgrid-cell input:-moz-placeholder:focus, .jsgrid-cell .app-search input:-moz-placeholder:focus, .app-search .jsgrid-cell select:-moz-placeholder:focus, .jsgrid-cell .app-search select:-moz-placeholder:focus, .app-search .dd-handle:-moz-placeholder:focus, .app-search .dd3-content:-moz-placeholder:focus {
-    text-transform: capitalize; }
+    /*text-transform: capitalize;*/ }
   .form-control::-moz-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered::-moz-placeholder,
   .select2-container--default .select2-selection--single::-moz-placeholder, .select2-selection.select2-selection--multiple::-moz-placeholder, .wizard .content > .body input::-moz-placeholder, .mce-floatpanel .mce-textbox::-moz-placeholder, .mce-floatpanel .mce-btn::-moz-placeholder, .dataTables_wrapper .dataTables_filter input::-moz-placeholder, .dataTables_wrapper .dataTables_length select::-moz-placeholder, .jsgrid-cell input::-moz-placeholder, .jsgrid-cell select::-moz-placeholder, .tablesaw-bar .btn-select select::-moz-placeholder, .dd-handle::-moz-placeholder, .dd3-content::-moz-placeholder, .app-search .form-control:focus::-moz-placeholder,
   .app-search .select2-container--default .select2-selection--single:focus::-moz-placeholder,
   .select2-container--default .app-search .select2-selection--single:focus::-moz-placeholder, .app-search .select2-selection.select2-selection--multiple:focus::-moz-placeholder, .app-search .mce-floatpanel .mce-textbox:focus::-moz-placeholder, .mce-floatpanel .app-search .mce-textbox:focus::-moz-placeholder, .app-search .mce-floatpanel .mce-btn:focus::-moz-placeholder, .mce-floatpanel .app-search .mce-btn:focus::-moz-placeholder, .app-search .dataTables_wrapper .dataTables_filter input:focus::-moz-placeholder, .dataTables_wrapper .dataTables_filter .app-search input:focus::-moz-placeholder, .app-search .dataTables_wrapper .dataTables_length select:focus::-moz-placeholder, .dataTables_wrapper .dataTables_length .app-search select:focus::-moz-placeholder, .app-search .jsgrid-cell input:focus::-moz-placeholder, .jsgrid-cell .app-search input:focus::-moz-placeholder, .app-search .jsgrid-cell select:focus::-moz-placeholder, .jsgrid-cell .app-search select:focus::-moz-placeholder, .app-search .tablesaw-bar .btn-select select:focus::-moz-placeholder, .tablesaw-bar .btn-select .app-search select:focus::-moz-placeholder, .app-search .dd-handle:focus::-moz-placeholder, .app-search .dd3-content:focus::-moz-placeholder {
-    text-transform: capitalize; }
+    /*text-transform: capitalize;*/ }
   .form-control:-ms-input-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered:-ms-input-placeholder,
   .select2-container--default .select2-selection--single:-ms-input-placeholder, .select2-selection.select2-selection--multiple:-ms-input-placeholder, .wizard .content > .body input:-ms-input-placeholder, .mce-floatpanel .mce-textbox:-ms-input-placeholder, .mce-floatpanel .mce-btn:-ms-input-placeholder, .dataTables_wrapper .dataTables_filter input:-ms-input-placeholder, .dataTables_wrapper .dataTables_length select:-ms-input-placeholder, .jsgrid-cell input:-ms-input-placeholder, .jsgrid-cell select:-ms-input-placeholder, .tablesaw-bar .btn-select select:-ms-input-placeholder, .dd-handle:-ms-input-placeholder, .dd3-content:-ms-input-placeholder, .app-search .form-control:-ms-input-placeholder:focus, .app-search .jsgrid-cell input:-ms-input-placeholder:focus, .jsgrid-cell .app-search input:-ms-input-placeholder:focus, .app-search .jsgrid-cell select:-ms-input-placeholder:focus, .jsgrid-cell .app-search select:-ms-input-placeholder:focus, .app-search .dd-handle:-ms-input-placeholder:focus, .app-search .dd3-content:-ms-input-placeholder:focus {
-    text-transform: capitalize; }
+    /*text-transform: capitalize;*/ }
   .form-control.filled-input, .select2-container--default .select2-selection--single .filled-input.select2-selection__rendered,
   .select2-container--default .filled-input.select2-selection--single, .filled-input.select2-selection.select2-selection--multiple, .wizard .content > .body input.filled-input, .mce-floatpanel .filled-input.mce-textbox, .mce-floatpanel .filled-input.mce-btn, .dataTables_wrapper .dataTables_filter input.filled-input, .dataTables_wrapper .dataTables_length select.filled-input, .jsgrid-cell input.filled-input, .jsgrid-cell select.filled-input, .tablesaw-bar .btn-select select.filled-input, .filled-input.dd-handle, .filled-input.dd3-content, .app-search .filled-input.form-control:focus, .app-search .jsgrid-cell input.filled-input:focus, .jsgrid-cell .app-search input.filled-input:focus, .app-search .jsgrid-cell select.filled-input:focus, .jsgrid-cell .app-search select.filled-input:focus, .app-search .filled-input.dd-handle:focus, .app-search .filled-input.dd3-content:focus {
     background: #f7f7f9;
@@ -4010,10 +4010,7 @@ footer {
 
 .form-inline .checkbox label, .form-inline .radio label {
   padding-left: 3px; }
-
-.control-label {
-  text-transform: capitalize; }
-
+ 
 .checkbox, .radio {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -8564,3 +8561,9 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
     margin-bottom: 20px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.btn-outline-orange {
+    border-color: #ff6028;
+    color: #ff6028;
+}
