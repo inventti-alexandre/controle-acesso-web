@@ -16,14 +16,14 @@ namespace ControleAcesso.Controllers
     public class EventoController : Controller
     {
         [Authorize(AuthenticationSchemes =
-       CookieAuthenticationDefaults.AuthenticationScheme)]
+       CookieAuthenticationDefaults.AuthenticationScheme + ",admin")]
         public IActionResult Index(int id, [FromServices]CursosDAO cursosDAO)
         {
             if (id != 0)
                 Cookie.SalvarCookie("EventoSelecionado", id.ToString(), Request);
 
-            var cursos = cursosDAO.ListarPorEvento(id);
-            return View(cursos);
+            //var cursos = cursosDAO.ListarPorEvento(id);
+            return RedirectToAction("Index","Pessoas");
         }
 
     }

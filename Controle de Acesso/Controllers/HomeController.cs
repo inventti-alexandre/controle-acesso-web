@@ -15,7 +15,7 @@ namespace ControleAcesso.Controllers
     public class HomeController : Controller
     {
         [Authorize(AuthenticationSchemes =
-       CookieAuthenticationDefaults.AuthenticationScheme)]
+       CookieAuthenticationDefaults.AuthenticationScheme + ",admin")]
         public IActionResult Index([FromServices]EventosDAO eventosDAO)
         {
             var eventoSelecionado = Cookie.LerCookie("EventoSelecionado", Request);

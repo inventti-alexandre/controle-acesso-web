@@ -17,15 +17,14 @@ using Microsoft.IdentityModel.Tokens;
 namespace Controle_de_Acesso.Controllers
 {
     public class LogoutController : Controller
-    {
-
+    { 
         [HttpPost]
         public async Task<ActionResult> Post()
         {
             await HttpContext.SignOutAsync(
-    CookieAuthenticationDefaults.AuthenticationScheme);
-
-            return RedirectToAction("Index", "Home");
+    CookieAuthenticationDefaults.AuthenticationScheme); 
+            await HttpContext.SignOutAsync("admin"); 
+            return RedirectToAction("Index", "Login");
         }
     }
 }

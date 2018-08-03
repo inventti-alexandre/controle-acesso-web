@@ -20,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ControleAcesso.Controllers
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme + ",admin")]
     public class PessoasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -84,6 +84,7 @@ namespace ControleAcesso.Controllers
             var idEvento = int.Parse(Cookie.LerCookie("EventoSelecionado", Request));
             ViewData["Cursos"] = cursoDAO.ListarPorEvento(idEvento);
             ViewData["Status"] = statusDAO.Listar();
+            ViewData["CursosVinculados"] = _context.CursoPresencas.Where(x => x.PessoaID == pessoa.PessoaID);
 
             var novaPessoaViewModel = new NovaPessoaViewModel()
             {
@@ -98,44 +99,50 @@ namespace ControleAcesso.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Novo([FromForm]IFormCollection form, [FromForm]NovaPessoaViewModel model, [FromServices]StatusDAO statusDAO)
         {
-            if (ModelState.IsValid)
+            try
             {
-                model.Pessoa = Pessoas.RemoverPontosETracos(model.Pessoa);
-
-                _context.Add(model.Pessoa);
-                await _context.SaveChangesAsync();
-
-                var cursos = form["Cursos"].ToString().Split(',');
-
-                foreach (var cursoID in cursos)
+                if (ModelState.IsValid)
                 {
-                    if (string.IsNullOrEmpty(cursoID))
-                        continue;
+                    //model.Pessoa = Pessoas.RemoverPontosETracos(model.Pessoa);
+                    _context.Add(model.Pessoa);
 
-                    var intId = int.Parse(cursoID);
+                    var cursos = form["Cursos"].ToString().Split(',');
 
-                    var cursoPresenca = new CursoPresenca()
+                    foreach (var cursoID in cursos)
                     {
-                        CursoID = intId,
-                        PessoaID = model.Pessoa.PessoaID,
-                        TipoPresencaID = 1, //Controlar no futuro
-                        StatusID = 1 //Controlar no futuro
-                    };
+                        if (string.IsNullOrEmpty(cursoID))
+                            continue;
 
-                    _context.Add(cursoPresenca);
+                        var intId = int.Parse(cursoID);
+
+                        var cursoPresenca = new CursoPresenca()
+                        {
+                            CursoID = intId,
+                            PessoaID = model.Pessoa.PessoaID,
+                            TipoPresencaID = 1, //Controlar no futuro
+                            StatusID = 1 //Controlar no futuro
+                        };
+
+                        _context.Add(cursoPresenca);
+                    }
+
+                    await _context.SaveChangesAsync();
+
+
+                    if (model.ImprimirEtiqueta)
+                        Impressao.Imprimir(model.Pessoa);
+
+                    return RedirectToAction(nameof(Index));
                 }
-
-                await _context.SaveChangesAsync();
-
-
-                if (model.ImprimirEtiqueta)
-                    Impressao.Imprimir(model.Pessoa);
-
-                return RedirectToAction(nameof(Index));
+                // ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusID", pessoa.StatusID);
+                ViewData["Status"] = statusDAO.Listar();
+                return View(model.Pessoa);
             }
-            // ViewData["StatusID"] = new SelectList(_context.Status, "StatusID", "StatusID", pessoa.StatusID);
-            ViewData["Status"] = statusDAO.Listar();
-            return View(model.Pessoa);
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         [HttpPost]
@@ -202,6 +209,20 @@ namespace ControleAcesso.Controllers
                 return false;
             }
             //System.IO.File.Copy("C:\\Users\\Web\\Desktop\\tmp.prn", "\\\\localhost\\argox01", true);
+        }
+
+
+        [HttpPost]
+        public IActionResult VerificarSeClienteExiste([FromForm] string CPF)
+        {
+
+            var pessoa = _context.Pessoas.FirstOrDefault(x => x.CPF == CPF);
+
+            if (pessoa != null)
+                return RedirectToAction("Gerenciar", "Pessoas", new { id = pessoa.PessoaID });
+            else
+                return RedirectToAction("Novo", "Pessoas", new { cpf = CPF });
+
         }
     }
 

@@ -10,7 +10,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Data table CSS -->    
+    <!-- Data table CSS -->
     @RenderSection("css", false)
     <!-- Custom CSS -->
     <link href="~/dist/css/style.css" rel="stylesheet" type="text/css">
@@ -251,7 +251,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <form method="post" action="@Url.Action("Post","Logout")">
+                                    <form method="post" action="@Url.Action("Post","Logout", new { Area="" })">
                                         <button type="submit"><i class="zmdi zmdi-power"></i><span>Log Out</span></button>
                                     </form>
                                 </li>
@@ -280,7 +280,7 @@
                 </li>
             </ul>
         </div>
-        <!-- /Left Sidebar Menu --> 
+        <!-- /Left Sidebar Menu -->
         <!-- Main Content -->
         <div class="page-wrapper">
             <div class="container">

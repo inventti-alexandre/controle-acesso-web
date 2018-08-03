@@ -1,10 +1,9 @@
 ﻿@model NovaPessoaViewModel
 
 @{
-    var status = ViewData["Status"] as IEnumerable<Status>
-    ;
-    var cursos = ViewData["Cursos"] as IEnumerable<Curso>
-        ;
+    var status = ViewData["Status"] as IEnumerable<Status>    ;
+    var cursos = ViewData["Cursos"] as IEnumerable<Curso>        ;
+    var cursosPresentes = ViewData["CursosVinculados"] as IEnumerable<CursoPresenca>;
 }
 
 
@@ -31,7 +30,7 @@
             <div class="panel-wrapper collapse in">
                 <div class="panel-body pt-0">
                     <div class="form-wrap">
-                        <form asp-action="Novo" method="post">
+                        <form asp-action="Gerenciar" method="post">
                             <input type="hidden" asp-for="Pessoa.PessoaID" />
                             <h6 class="txt-dark flex flex-middle capitalize-font"><i class="font-20 txt-grey zmdi zmdi-info-outline mr-10 "></i>Informações Pessoais</h6>
                             <hr class="light-grey-hr" />

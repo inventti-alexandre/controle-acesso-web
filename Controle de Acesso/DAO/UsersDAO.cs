@@ -20,8 +20,9 @@ namespace ControleAcesso.DAO
                 _configuration.GetConnectionString("DefaultConnection")))
             {
                 return conexao.QueryFirstOrDefault<Usuario>(
-                    "SELECT * " +
-                    "FROM dbo.Usuarios " +
+                    "SELECT a.Username, a.Senha, a.Nome, b.TipoUsuarioID " +
+                    "FROM dbo.Usuarios a" +
+                    "inner join dbo.TipoUsuario b on b.TipoUsuarioID = a.TipoUsuarioID " +
                     "WHERE Username = @Username and Senha = @Senha", new { Username, Senha });
             }
         }

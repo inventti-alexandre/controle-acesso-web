@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 namespace Controle_de_Acesso.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(AuthenticationSchemes = "admin," + CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = "admin")]
     public class UsuariosController : Controller
     {
         private readonly ApplicationDbContext _context;
