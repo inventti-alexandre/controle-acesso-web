@@ -1338,6 +1338,9 @@
 
   <ItemGroup>
     <None Include="wwwroot\arquivos\evento\4-empreenda-magistral.jpg" />
+    <None Include="wwwroot\img\svg\001-trash.svg" />
+    <None Include="wwwroot\img\svg\002-search.svg" />
+    <None Include="wwwroot\img\svg\003-pencil.svg" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />

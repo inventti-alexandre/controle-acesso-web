@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ControleAcesso.Models.Evento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!-- Title -->
+<div class="row heading-bg">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h5 class="txt-dark">Eventos</h5>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li class="active"><span>Eventos</span></li>
+        </ol>
+    </div>
+    <!-- /Breadcrumb -->
+</div>
+<!-- /Title -->
+<!-- Row -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right mb-15">
+        <a asp-action="Create" class="btn btn-default">Novo</a>
+        <div class="clearfix"></div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="panel panel-default contact-card card-view">
+                <div class="panel-heading" style="background-image: url('@Url.Content(Caminho.Evento + item.Banner)'); background-size: cover; position: relative">
+                    <div style="position: absolute; background-color: rgba(0,0,0,0.7); top: 0; left: 0; width: 100%; height: 100%; z-index:0"></div>
+                    <div class="pull-left" style="z-index: 1; position: relative">
+                        <div class="pull-left user-img-wrap mr-15">
+                            <img class="card-user-img img-circle pull-left" src="@Url.Content(Caminho.Evento + item.Logo)" alt="user" />
+                        </div>
+                        <div class="pull-left user-detail-wrap">
+                            <span class="block card-user-name">
+                                @item.Nome
+                            </span>
+                            <span class="block card-user-desn">
+                                designer
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <a class="pull-left inline-block mr-15" asp-action="Edit" asp-route-id="@item.EventoID">
+                            <i class="zmdi zmdi-edit txt-light"></i>
+                        </a>
+                        <a class="pull-left inline-block mr-15" asp-action="Delete" asp-route-id="@item.EventoID">
+                            <i class="zmdi zmdi-delete txt-light"></i>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-wrapper collapse in">
+                    <div class="panel-body row">
+                        <div class="user-others-details pl-15 pr-15">
+                            @Html.Raw(item.Descricao)
+                        </div>
+                        <hr class="light-grey-hr mt-20 mb-20" />
+                        <div class="emp-detail pl-15 pr-15">
+                            <div class="mb-5">
+                                <span class="inline-block capitalize-font mr-5">Data início: </span>
+                                <span class="txt-dark">@item.DataInicio</span>
+                            </div>
+                            <div class="mb-5">
+                                <span class="inline-block capitalize-font mr-5">Data fim: </span>
+                                <span class="txt-dark">@item.DataFim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- Row --> 
+@section css{
+    <!-- Data table CSS -->
+    <link href="~/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+} 
+@section js{
+    <!-- Data table JavaScript -->
+    <script src="~/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#datable_1").DataTable({
+            "language": {
+                "url": "/vendors/bower_components/datatables/media/i18n/pt-br.json"
+            }
+        })
+    </script>
+}

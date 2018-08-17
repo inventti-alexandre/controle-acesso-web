@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ControleAcesso.Data
 {
     public class ApplicationDbContext : DbContext
-    {
+    { 
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Evento> Eventos{ get; set; }
@@ -14,6 +14,7 @@ namespace ControleAcesso.Data
         public DbSet<TipoPresenca> TipoPresenca { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public DbSet<TipoEvento> TipoEvento { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

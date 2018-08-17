@@ -3871,8 +3871,7 @@ a#toggle_mobile_nav {
           content: "\f16c"; }
 
 .heading-bg {
-  height: 67px;
-  margin: 0 -24px 10px;
+  height: 67px; 
   padding: 13px 0; }
   .heading-bg h5 {
     padding-top: 6px; }
